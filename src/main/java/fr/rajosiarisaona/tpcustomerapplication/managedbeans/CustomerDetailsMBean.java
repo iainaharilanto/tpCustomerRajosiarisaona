@@ -5,8 +5,11 @@
 package fr.rajosiarisaona.tpcustomerapplication.managedbeans;
 
 import fr.rajosiarisaona.tpcustomerapplication.entities.Customer;
+import fr.rajosiarisaona.tpcustomerapplication.entities.DiscountCode;
 import fr.rajosiarisaona.tpcustomerapplication.session.CustomerManager;
+import fr.rajosiarisaona.tpcustomerapplication.session.DiscountCodeManager;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -22,6 +25,9 @@ public class CustomerDetailsMBean implements Serializable {
 
   @EJB
   private CustomerManager customerManager;
+  
+  @EJB
+  private DiscountCodeManager discountCodeManager;
 
   public int getIdCustomer() {
     return idCustomer;
@@ -55,4 +61,10 @@ public class CustomerDetailsMBean implements Serializable {
   public void loadCustomer() {
     this.customer = customerManager.getCustomer(idCustomer);
   }
+  
+   public List<DiscountCode> getDiscountCodes() {
+    return discountCodeManager.getAllDiscountCodes();
+  }
+   
+   
 }
