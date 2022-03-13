@@ -11,14 +11,14 @@
         <f:view>
             <h:form>
                 <h1><h:outputText value="List"/></h1>
-                <p:dataTable value="#{customerMBean.customers}" var="item">
+                <p:dataTable paginator="true" rows="10" value="#{customerMBean.customers}" var="item">
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="CustomerId"/>
                         </f:facet>
                         <h:outputText value="#{item.customerId}"/>
                     </p:column>
-                    <p:column>
+                    <p:column sortBy="#{item.name}" filterBy="#{item.state}">
                         <f:facet name="header">
                             <h:outputText value="Name"/>
                         </f:facet>
@@ -36,13 +36,13 @@
                         </f:facet>
                         <h:outputText value="#{item.addressline2}"/>
                     </p:column>
-                    <p:column>
+                    <p:column sortBy="#{item.city}">
                         <f:facet name="header">
                             <h:outputText value="City"/>
                         </f:facet>
                         <h:outputText value="#{item.city}"/>
                     </p:column>
-                    <p:column>
+                    <p:column sortBy="#{item.state += ' ' += item.city}" filterBy="#{item.state}">
                         <f:facet name="header">
                             <h:outputText value="State"/>
                         </f:facet>
