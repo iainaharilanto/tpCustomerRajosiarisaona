@@ -15,10 +15,13 @@
     <h:body>
         <f:view>
 
-
-            <h:form>
+            
+            <h:button id="back" value="Revenir à la liste" outcome="CustomerList"/>
+            <br/>
+            <h:outputText value="Aucun client avec l'id #{customerDetailsMBean.idCustomer} a été trouvé!" 
+                          rendered='#{customerDetailsMBean.details == null}'/>
+            <h:form rendered="#{customerDetailsMBean.details != null}">
                 <h1><h:outputText value="Create/Edit"/></h1>
-                <h:button id="back" value="Revenir à la liste" outcome="CustomerList"/>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="CustomerId:" for="customerId" />
                     <h:inputText id="customerId" 
